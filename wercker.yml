@@ -5,4 +5,3 @@ deploy:
             key-id: $KEY
             key-secret: $SECRET
             bucket-url: $BUCKET
-            opts: --acl-public --exclude '.*'
