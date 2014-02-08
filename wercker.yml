@@ -4,4 +4,5 @@ deploy:
         - s3sync:
             key-id: $KEY
             key-secret: $SECRET
+            source-dir: ./content
             bucket-url: $BUCKET
