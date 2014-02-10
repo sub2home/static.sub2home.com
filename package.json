@@ -1,0 +1,12 @@
+{
+  "name": "s3",
+  "version": "0.0.0",
+  "description": "",
+  "private": true,
+  "dependencies": {
+    "grunt-responsive-images": "~0.1.1"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2"
+  }
+}
