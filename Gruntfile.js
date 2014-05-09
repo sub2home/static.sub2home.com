@@ -1,21 +1,39 @@
 module.exports = function(grunt) {
 
-	grunt.initConfig({
+  require('load-grunt-tasks')(grunt);
 
-		pkg: grunt.file.readJSON('package.json'),
+  grunt.initConfig({
 
-		responsive_images: {
-			options: {
-				// Task-specific options go here.
-			},
-			all: {
-				// Target-specific file lists and/or options go here.
-			},
-		},
-	});
+    clean: {
+      dist: ['dist'],
+    },
 
-	grunt.loadNpmTasks('grunt-responsive-images');
+    responsive_images: {
+      dist: {
+        options: {
+          sizes: [{
+            name: 'normal',
+            width: '50%',
+            rename: false,
+          }, {
+            name: 'retina',
+            suffix: "_x2",
+            width: '100%',
+          }],
+        },
+        files: [{
+          expand: true,
+          src: ['images/**/*.{png,jpg}'],
+          cwd: 'content',
+          dest: 'dist'
+        }]
+      },
+    },
+  });
 
-	grunt.registerTask('default', ['responsive_images:all']);
+  grunt.registerTask('default', [
+    'clean',
+    'responsive_images',
+  ]);
 
 };
