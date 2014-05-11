@@ -19,6 +19,7 @@ module.exports = function(grunt) {
             name: 'retina',
             suffix: "_x2",
             width: '100%',
+            rename: false,
           }],
         },
         files: [{
