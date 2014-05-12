@@ -8,6 +8,15 @@ module.exports = function(grunt) {
       dist: ['dist'],
     },
 
+    copy: {
+      dist: {
+        expand: true,
+        cwd: 'content/',
+        src: '{audio,documents}/**',
+        dest: 'dist/',
+      }
+    },
+
     responsive_images: {
       dist: {
         options: {
@@ -34,6 +43,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', [
     'clean',
+    'copy',
     'responsive_images',
   ]);
 
