@@ -1,4 +1,18 @@
-box: wercker/default
+box: wercker/nodejs
+build:
+    steps:
+        - script:
+            name: install global dependencies
+            code: sudo npm install -g grunt-cli
+        - script:
+            name: install local dependencies
+            code: npm install
+        - script:
+            name: install GraphicsMagick
+            code: sudo apt-get install graphicsmagick
+        - script:
+            name: compress
+            code: grunt
 deploy:
     steps:
         - s3sync:
