@@ -22,14 +22,19 @@ module.exports = function(grunt) {
         options: {
           sizes: [{
             name: 'normal',
-            width: '50%',
-            rename: false,
-          }, {
-            name: 'retina',
-            suffix: "_x2",
             width: '100%',
             rename: false,
           }],
+          //sizes: [{
+            //name: 'normal',
+            //width: '50%',
+            //rename: false,
+          //}, {
+            //name: 'retina',
+            //suffix: "_x2",
+            //width: '100%',
+            //rename: false,
+          //}],
         },
         files: [{
           expand: true,
