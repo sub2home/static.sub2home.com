@@ -11,7 +11,7 @@ Source images in the `content/images` folder need to be at least twice as big as
 
 ### Types
 
-Every type `x` will also have a type `x-retina`.
+Every type `x` will also have a type `x-2x `.
 
 Type | Filetype | Quality |  Dimensions in `px` | Comment
 --- | --- | --- | --- | ---
@@ -31,17 +31,17 @@ Type | Path | Dimensions in `px`
 --- | --- | ---
 *original image* | `images/some/folder/image.png`
 `a` | `images/some/folder/a/image.png` | `70 * 70`
-`a-retina` | `images/some/folder/a-retina/image.png` | `140 * 140`
+`a-2x` | `images/some/folder/a-2x/image.png` | `140 * 140`
 `b` | `images/some/folder/b/image.jpg` | `70 * 70`
-`b-retina` | `images/some/folder/b-retina/image.jpg` | `140 * 140`
+`b-2x` | `images/some/folder/b-2x/image.jpg` | `140 * 140`
 `c` | `images/some/folder/c/image.jpg` | `200 * 200`
-`c-retina` | `images/some/folder/c-retina/image.jpg` | `400 * 400`
+`c-2x` | `images/some/folder/c-2x/image.jpg` | `400 * 400`
 `d` | `images/some/folder/d/image.jpg` | `500 * 500`
-`d-retina` | `images/some/folder/d-retina/image.jpg` | `1000 * 1000`
+`d-2x` | `images/some/folder/d-2x/image.jpg` | `1000 * 1000`
 `e` | `images/some/folder/e/image.jpg` | `300 * 300`
-`e-retina` | `images/some/folder/e-retina/image.jpg` | `600 * 600`
+`e-2x` | `images/some/folder/e-2x/image.jpg` | `600 * 600`
 `f` | `images/some/folder/f/image.png` | `300 * 300`
-`f-retina` | `images/some/folder/f-retina/image.png` | `600 * 600`
+`f-2x` | `images/some/folder/f-2x/image.png` | `600 * 600`
 `g` | `images/some/folder/g/image.png` | `213 * 160`
-`g-retina` | `images/some/folder/g-retina/image.png` | `426 * 320`
+`g-2x` | `images/some/folder/g-2x/image.png` | `426 * 320`
 
