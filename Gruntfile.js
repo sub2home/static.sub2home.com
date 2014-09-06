@@ -26,33 +26,85 @@ module.exports = function(grunt) {
             name: 'a',
             width: '70px',
             height: '70px',
+            quality: 100,
             rename: false,
           }, {
             name: 'a-2x',
             width: '140px',
             height: '140px',
+            quality: 100,
             rename: false,
           }, {
             name: 'b',
             width: '140px',
             height: '140px',
+            quality: 100,
             rename: false,
           }, {
             name: 'b-2x',
             width: '140px',
             height: '140px',
+            quality: 100,
             rename: false,
-          }],
-          //sizes: [{
-          //name: 'normal',
-          //width: '50%',
-          //rename: false,
-          //}, {
-          //name: 'retina',
-          //suffix: "_x2",
-          //width: '100%',
-          //rename: false,
-          //}],
+          }, {
+            name: 'c',
+            width: '200px',
+            height: '200px',
+            quality: 100,
+            rename: false,
+          }, {
+            name: 'c-2x',
+            width: '400px',
+            height: '400px',
+            quality: 100,
+            rename: false,
+          }, {
+            name: 'd',
+            width: '500px',
+            height: '500px',
+            quality: 100,
+            rename: false,
+          }, {
+            name: 'd-2x',
+            width: '1000px',
+            height: '1000px',
+            quality: 100,
+            rename: false,
+          }, {
+            name: 'e',
+            width: '300px',
+            height: '300px',
+            quality: 100,
+            rename: false,
+          }, {
+            name: 'e-2x',
+            width: '600px',
+            height: '600px',
+            quality: 100,
+            rename: false,
+          }, {
+            name: 'f',
+            width: '300px',
+            height: '300px',
+            quality: 100,
+            rename: false,
+          }, {
+            name: 'f-2x',
+            width: '600px',
+            height: '600px',
+            quality: 100,
+            rename: false,
+          }, {
+            name: 'g',
+            height: '160px',
+            quality: 100,
+            rename: false,
+          }, {
+            name: 'g-2x',
+            height: '320px',
+            quality: 100,
+            rename: false,
+          }]
         },
         files: [{
           expand: true,
@@ -77,9 +129,9 @@ module.exports = function(grunt) {
             })
             .flatten()
             .map(function(file) {
-              return 'gm mogrify -quality 100 -format jpg ' + file + ' && rm ' + file;
+              return 'gm convert -quality 100 -background white -flatten ' + file + ' ' + file.replace('png', 'jpg') + ' && rm ' + file;
             })
-            .join('&&');
+            .join(' && ');
 
           return commandString;
 
