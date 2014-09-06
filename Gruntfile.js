@@ -3,6 +3,7 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
   var _ = require('lodash');
   var glob = require('glob');
+  var exec = require('execSync').run;
 
   grunt.initConfig({
 
@@ -115,29 +116,24 @@ module.exports = function(grunt) {
       },
     },
 
-    shell: {
-      dist: {
-        command: function() {
+  });
 
-          var commandString = _(['b', 'c', 'd', 'e'])
-            .map(function(type) {
-              return [type, type + '-2x'];
-            })
-            .flatten()
-            .map(function(type) {
-              return glob.sync('dist/images/**/' + type + '/**/*');
-            })
-            .flatten()
-            .map(function(file) {
-              return 'gm convert -quality 100 -background white -flatten ' + file + ' ' + file.replace('png', 'jpg') + ' && rm ' + file;
-            })
-            .join(' && ');
+  grunt.registerTask('pngToJpg', function() {
 
-          return commandString;
+    var files = _(['b', 'c', 'd', 'e'])
+      .map(function(type) {
+        return [type, type + '-2x'];
+      })
+      .flatten()
+      .map(function(type) {
+        return glob.sync('dist/images/**/' + type + '/**/*');
+      })
+      .flatten()
+      .value();
 
-        },
-      }
-    }
+    files.forEach(function(file) {
+      exec('gm convert -quality 100 -background white -flatten ' + file + ' ' + file.replace('png', 'jpg') + ' && rm ' + file);
+    });
 
   });
 
@@ -145,7 +141,7 @@ module.exports = function(grunt) {
     'clean',
     'copy',
     'responsive_images',
-    'shell',
+    'pngToJpg',
   ]);
 
 };
