@@ -1,6 +1,8 @@
 module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
+  var _ = require('lodash');
+  var glob = require('glob');
 
   grunt.initConfig({
 
@@ -12,7 +14,7 @@ module.exports = function(grunt) {
       dist: {
         expand: true,
         cwd: 'content/',
-        src: '{audio,documents}/**',
+        src: '**',
         dest: 'dist/',
       }
     },
@@ -21,35 +23,77 @@ module.exports = function(grunt) {
       dist: {
         options: {
           sizes: [{
-            name: 'normal',
-            width: '100%',
+            name: 'a',
+            width: '70px',
+            height: '70px',
+            rename: false,
+          }, {
+            name: 'a-2x',
+            width: '140px',
+            height: '140px',
+            rename: false,
+          }, {
+            name: 'b',
+            width: '140px',
+            height: '140px',
+            rename: false,
+          }, {
+            name: 'b-2x',
+            width: '140px',
+            height: '140px',
             rename: false,
           }],
           //sizes: [{
-            //name: 'normal',
-            //width: '50%',
-            //rename: false,
+          //name: 'normal',
+          //width: '50%',
+          //rename: false,
           //}, {
-            //name: 'retina',
-            //suffix: "_x2",
-            //width: '100%',
-            //rename: false,
+          //name: 'retina',
+          //suffix: "_x2",
+          //width: '100%',
+          //rename: false,
           //}],
         },
         files: [{
           expand: true,
           src: ['images/**/*.{png,jpg}'],
           cwd: 'content',
-          dest: 'dist'
+          custom_dest: 'dist/{%= path %}/{%= name %}/'
         }]
       },
     },
+
+    shell: {
+      dist: {
+        command: function() {
+
+          var commandString = _(['b', 'c', 'd', 'e'])
+            .map(function(type) {
+              return [type, type + '-2x'];
+            })
+            .flatten()
+            .map(function(type) {
+              return glob.sync('dist/images/**/' + type + '/**/*');
+            })
+            .flatten()
+            .map(function(file) {
+              return 'gm mogrify -quality 100 -format jpg ' + file + ' && rm ' + file;
+            })
+            .join('&&');
+
+          return commandString;
+
+        },
+      }
+    }
+
   });
 
   grunt.registerTask('default', [
     'clean',
     'copy',
     'responsive_images',
+    'shell',
   ]);
 
 };
