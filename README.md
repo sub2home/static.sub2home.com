@@ -1,6 +1,8 @@
 static-content
 ==============
 
+[![wercker status](https://app.wercker.com/status/42f08976750b431c1c42e41d5ef2f24f/m "wercker status")](https://app.wercker.com/project/bykey/42f08976750b431c1c42e41d5ef2f24f)
+
 ## General
 
 Everything inside the `content` directory will be processed and copied to a `dist` folder. The URL mapping to Cloudfront or S3 starts inside the `dist` folder (mostly identical to `content`).
