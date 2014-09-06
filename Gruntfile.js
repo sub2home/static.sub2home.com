@@ -132,7 +132,7 @@ module.exports = function(grunt) {
       .value();
 
     files.forEach(function(file) {
-      console.log('Convert ' + file);
+      grunt.log.writeln('Convert ' + file);
       exec('gm convert -quality 100 -background white -flatten ' + file + ' ' + file.replace('png', 'jpg') + ' && rm ' + file);
     });
 
