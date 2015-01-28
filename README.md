@@ -47,3 +47,6 @@ Type | Path | Dimensions in `px`
 `g` | `images/some/folder/g/image.png` | `213 * 160`
 `g-2x` | `images/some/folder/g-2x/image.png` | `426 * 320`
 
+## Disclaimer
+
+Some images are property of SUBWAY® and may not be used.
